@@ -1,9 +1,17 @@
+
 export interface Task {
   id: string;
   title: string;
-  completed: boolean;
   description: string;
-  createdAt: Date;
-  finalizedAt?: Date;
-  priority: 'low' | 'medium' | 'high';
+  completed: boolean;
+  createdAt?: string;
+  completedAt?: string | null;
+  updatedAt?: string | null;
+  priority: Priority;
+}
+
+export enum Priority {
+    LOW = 'low',
+    MEDIUM = 'medium',
+    HIGH = 'high'
 }

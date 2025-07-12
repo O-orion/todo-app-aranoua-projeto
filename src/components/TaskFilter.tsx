@@ -5,7 +5,7 @@ interface TaskFilterProps {
   onOpenModal: () => void;
 }
 
-const TaskFilter: React.FC<TaskFilterProps> = ({ onFilter, onOpenModal }) => {
+function TaskFilter ({ onFilter, onOpenModal }: TaskFilterProps)  {
   const [query, setQuery] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

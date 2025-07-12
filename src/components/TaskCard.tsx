@@ -7,7 +7,7 @@ interface TaskCardProps {
   onDelete: (id: string) => void;
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({ task, onToggle, onDelete }) => {
+function TaskCard ({ task, onToggle, onDelete }:  TaskCardProps)  {
   const getPriorityColor = (priority: Task["priority"]) => {
     switch (priority) {
       case "high":
@@ -37,32 +37,40 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onToggle, onDelete }) => {
             {task.title}
           </h3>
           <p className="text-sm text-gray-600">{task.description}</p>
-          <p className="text-xs text-gray-500 mt-1">
-            Criada em: {task.createdAt.toLocaleDateString()}
-          </p>
-          {task.finalizedAt && (
+            {task.createdAt && (
+            <p className="text-xs text-gray-500 mt-1">
+                Criada em: {new Date(task.createdAt).toLocaleDateString()}
+            </p>
+            )}
+
+          {task.completedAt && (
             <p className="text-xs text-gray-500">
-              Finalizada em: {task.finalizedAt.toLocaleDateString()}
+                Finalizada em: {new Date(task.completedAt).toLocaleDateString()}
             </p>
           )}
           <p className="text-xs font-medium mt-1 capitalize">
             Prioridade: {task.priority}
           </p>
         </div>
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            checked={task.completed}
-            onChange={() => onToggle(task.id, task.completed)}
-            className="h-5 w-5 text-blue-500 rounded focus:ring-blue-500"
-          />
-          <button
-            onClick={() => onDelete(task.id)}
-            className="text-red-500 hover:text-red-700 transition"
-          >
-            ✕
-          </button>
-        </div>
+            {
+                task.id &&(
+                    <div className="flex items-center space-x-2">
+
+                    <input
+                        type="checkbox"
+                        checked={task.completed}
+                        onChange={() => onToggle(task.id, task.completed)}
+                        className="h-5 w-5 text-blue-500 rounded focus:ring-blue-500"
+                    />
+                    <button
+                        onClick={() => onDelete(task.id)}
+                        className="text-red-500 hover:text-red-700 transition"
+                    >
+                        ✕
+                    </button>
+                    </div>
+                )
+            }
       </div>
     </div>
   );

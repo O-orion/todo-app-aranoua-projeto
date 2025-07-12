@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Task } from "../types/Task";
+import { Priority } from "../types/Task";
 
 interface TaskFormProps {
   onAdd: (title: string, description: string, priority: Task["priority"]) => void;
   onClose: () => void;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ onAdd, onClose }) => {
+function TaskForm ({ onAdd, onClose }: TaskFormProps)  {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState<Task["priority"]>("low");
+  const [priority, setPriority] = useState<Priority>(Priority.LOW);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAdd, onClose }) => {
     onAdd(title, description, priority);
     setTitle("");
     setDescription("");
-    setPriority("low");
+    setPriority(Priority.LOW);
     onClose();
   };
 
