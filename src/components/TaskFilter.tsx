@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Plus } from "lucide-react";
 
 interface TaskFilterProps {
   onFilter: (query: string) => void;
@@ -28,7 +29,7 @@ function TaskFilter ({ onFilter, onOpenModal }: TaskFilterProps)  {
         className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition"
         title="Adicionar nova tarefa"
       >
-        +
+        <Plus className="w-4 h-4" />
       </button>
     </div>
   );

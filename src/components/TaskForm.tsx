@@ -63,9 +63,7 @@ function TaskForm ({ onAdd, onClose }: TaskFormProps)  {
         <button
           type="button"
           onClick={onClose}
-          className="flex-1 p-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300ряда
-
-System: transition"
+          className="flex-1 p-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300рядаSystem: transition"
         >
           Cancelar
         </button>
